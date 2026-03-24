@@ -1,5 +1,0 @@
-Locator expected to be visible
-Actual value: <element(s) not found> 
-Call log:
-  - LocatorAssertions.to_be_visible with timeout 40000ms
-  - waiting for get_by_text("Your email or password is incorrect!")

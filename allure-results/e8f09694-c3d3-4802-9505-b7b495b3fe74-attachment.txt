@@ -1,7 +1,0 @@
-Locator expected to be visible
-Actual value: hidden 
-Call log:
-  - LocatorAssertions.to_be_visible with timeout 40000ms
-  - waiting for get_by_text("Your email or password is incorrect!")
-    7 × locator resolved to <li class="list-group-item">8. Verify error 'Your email or password is incorr…</li>
-      - unexpected value "hidden"

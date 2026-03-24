@@ -1,3 +1,4 @@
+import os
 from datetime import datetime
 import re
 import allure
@@ -29,7 +30,7 @@ def after_step(context, step):
     if step.status == "failed":
 
         safe_name = re.sub(r'[^a-zA-Z0-9_-]', '_', step.name)
-        screenshot = context.screenshot_path / f"{step.name}_error.png"
+        screenshot = context.screenshot_path / "test_error.png"
 
         context.page.screenshot(path=screenshot)
 
@@ -70,14 +71,32 @@ def before_scenario(context, scenario):
 
     context.playwright = sync_playwright().start()
 
-    context.browser = context.playwright.chromium.launch(
-        headless=False,
-        args=[
+    browser_name = os.getenv("BROWSER", "chromium")
+
+    if browser_name == "chromium":
+        browser_type = context.playwright.chromium
+        launch_args = [
             "--start-maximized",
             "--ignore-certificate-errors",
             "--disable-notifications",
-            "--disable-extensions"
+            "--disable-extensions",
+            "--allow-running-insecure-content",
+            "--disable-web-security"
         ]
+    elif browser_name == "firefox":
+        browser_type = context.playwright.firefox
+        launch_args = []
+    elif browser_name == "webkit":
+        browser_type = context.playwright.webkit
+        launch_args = []
+    else:
+        raise Exception(f"Browser no soportado: {browser_name}")
+
+    context.browser = browser_type.launch(
+        #channel="chrome",
+        headless=False,
+        slow_mo=50,
+        args=launch_args
     )
 
     context.context = context.browser.new_context(

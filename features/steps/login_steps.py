@@ -9,7 +9,7 @@ def step_login_page(context):
 @when(u'ingresa las credenciales de usuario incorrecto "{email}" "{usuario}"')
 def step_form_login(context,email,usuario):
     context.login_page.form_login_fill(email,usuario)
-    context.page.pause()
+    #context.page.pause()
 
 @then(u'debe mostrarse la página de inicio')
 def step_validate_home(context):

@@ -39,6 +39,7 @@
 """
 
 """
+ https://trace.playwright.dev/
  playwright show-trace traces/nombre_trace.zip
  playwright show-trace reports/2026-03-15_15-31-13/traces/Registro_existoso_153124.zip  
  playwright codegen -o test_recorded.py https://www.automationexercise.com/signup

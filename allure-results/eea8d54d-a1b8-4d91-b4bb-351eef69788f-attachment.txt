@@ -1,7 +1,0 @@
-Page URL expected to be 're.compile('https://www.automationexercise.com/account_created')'
-Actual value: https://www.automationexercise.com/signup 
-Call log:
-  - PageAssertions.to_have_url with timeout 5000ms
-  - waiting for locator(":root")
-    9 × locator resolved to <html lang="en">…</html>
-      - unexpected value "https://www.automationexercise.com/signup"

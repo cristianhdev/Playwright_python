@@ -13,30 +13,36 @@ class FormRegisterPage(FormRegisterUI,BaseTest):
 
     def fill_form_register_form(self):
 
-        data = DataReader.read_json(f"resources/{self._path}")
+        global gender,password,birt_day,month,year,first_name,last_name,company,country,address,state,city,zip_code,mobile_number
 
+        #data = DataReader.read_json(f"resources/{self._path}")
+        data = DataReader.read_excel(f"resources/data/usuarios.xlsx")
 
-        #get Data json
-        gender = data["gender"]
-        password = data["password"]
-        birt_day = data["birt_day"]
-        month = data["month"]
-        year = data["year"]
-        first_name = data["first_name"]
-        last_name = data["last_name"]
-        company = data["company"]
-        country = data["country"]
-        address = data["address"]
-        state = data["state"]
-        city = data["city"]
-        zip_code = data["zip_code"]
-        mobile_number = data["mobile_number"]
+        print(data)
+
+        for fila in data:
+            print(fila)
+            #get Data json
+            gender = fila["gender"]
+            password = fila["password"]
+            """birt_day = int(fila["birt_day"])
+            month = fila["month"]"""
+            year = fila["year"]
+            first_name = fila["first_name"]
+            last_name = fila["last_name"]
+            company = fila["company"]
+            country = fila["country"]
+            address = fila["address"]
+            state = fila["state"]
+            city = fila["city"]
+            zip_code = fila["zip_code"]
+            mobile_number = fila["mobile_number"]
 
 
         self.check_by_label(gender)
         self.fill(self.input_password,password)
-        self.select_option(self.select_data_birt_day,birt_day)
-        self.select_option(self.select_data_month,month)
+        """self.select_option(self.select_data_birt_day,birt_day)
+        self.select_option(self.select_data_month,month)"""
         self.select_option(self.select_data_years,year)
         self.check_by_label(self.checkbox_sing_up)
         self.check_by_label(self.checkbox_offers)
