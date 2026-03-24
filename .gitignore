@@ -1,5 +1,5 @@
 # Entornos virtuales
-venv/
+.venv/
 .env/
 
 # Python
@@ -29,3 +29,4 @@ Thumbs.db
 .vscode/
 .idea/
 
+test_recorded.py

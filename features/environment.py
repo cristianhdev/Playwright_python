@@ -94,7 +94,7 @@ def before_scenario(context, scenario):
 
     context.browser = browser_type.launch(
         #channel="chrome",
-        headless=False,
+        headless=True,
         slow_mo=50,
         args=launch_args
     )
