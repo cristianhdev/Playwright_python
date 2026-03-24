@@ -1,0 +1,16 @@
+{
+  "gender": "Mrs.",
+  "password": "$12345$",
+  "birt_day": "11",
+  "month": "December",
+  "year": "1989",
+  "first_name": "Natalia",
+  "last_name": "Perez",
+  "company": "Test",
+  "address": "12 Street 12-12",
+  "country": "Canada",
+  "state":"Montana",
+  "city":"Otawa",
+  "zip_code":"000063",
+  "mobile_number":"30001010111"
+}
