@@ -2,16 +2,16 @@ name: Behave + Playwright + Allure CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📥 Checkout repo
+      - name: 📥 Checkout repository
         uses: actions/checkout@v4
 
       - name: 🐍 Setup Python
@@ -21,11 +21,11 @@ jobs:
 
       - name: 📦 Install dependencies
         run: |
+          python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install playwright
           playwright install --with-deps
 
-      - name: 🧪 Run Behave Tests with Allure
+      - name: 🧪 Run Behave Tests (Allure)
         run: |
           behave -f allure_behave.formatter:AllureFormatter -o allure-results
 
@@ -47,15 +47,19 @@ jobs:
           name: allure-results
           path: allure-results
 
-      - name: ☕ Setup Java
+      - name: ☕ Setup Java (Required for Allure)
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
 
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
       - name: 📦 Install Allure CLI
-        run: |
-          npm install -g allure-commandline --save-dev
+        run: npm install -g allure-commandline
 
       - name: 📊 Generate Allure Report
         run: |
